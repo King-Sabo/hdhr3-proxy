@@ -1,0 +1,23 @@
+[Unit]
+Description=HDHR3 to Plex bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=hdhr3
+Group=hdhr3
+WorkingDirectory=/opt/hdhr3
+ExecStart=/opt/hdhr3/run.sh
+Restart=on-failure
+RestartSec=15
+StateDirectory=hdhr3
+
+# Streaming is inbound UDP on an ephemeral port; keep the sandbox loose enough.
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
