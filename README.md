@@ -1,6 +1,6 @@
 # HDHR3 -> Plex
 
-Makes a legacy HDHomeRun (HDHR3-EU / HDHR3-US / HDHR-US) usable as a Plex tuner,
+Makes a legacy HDHomeRun (HDHR3-EU) usable as a Plex tuner,
 on Linux or Windows.
 
 Those devices have no HTTP interface — SiliconDust confirmed the hardware can't
@@ -22,6 +22,7 @@ Python 3.8 or newer, and `hdhomerun_config` from SiliconDust — nothing else:
     Debian/Ubuntu : apt install hdhomerun-config
     Fedora        : dnf install libhdhomerun
     Arch          : pacman -S libhdhomerun
+    Gentoo        : emerge media-libs/libhdhomerun
     Windows       : the HDHomeRun software installer
 
 On Windows, run with `py -3`: `python3` there is often an old or non-native
@@ -60,6 +61,11 @@ places most likely to need work elsewhere are:
     journalctl -fu hdhr3-proxy
 
 Or without installing anything: edit `hdhr3-proxy.conf`, then `./run.sh`.
+
+If you tested with `run.sh` first, `install.sh` carries `muxes.json`,
+`services.json`, `epg-cache.json` and `guide.xml` into `DATA_DIR`, so the
+service starts with the scan and guide you already have instead of repeating
+both. Existing files there are never overwritten.
 
 ## Setup — Windows
 

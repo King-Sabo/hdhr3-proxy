@@ -1,17 +1,17 @@
 [Unit]
-Description=HDHR3 to Plex bridge
+Description=hdhr3-proxy (HDHR3 to Plex bridge)
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
-User=hdhr3
-Group=hdhr3
-WorkingDirectory=/opt/hdhr3
-ExecStart=/opt/hdhr3/run.sh
+User=hdhr3-proxy
+Group=hdhr3-proxy
+WorkingDirectory=/opt/hdhr3-proxy
+ExecStart=/opt/hdhr3-proxy/run.sh
 Restart=on-failure
 RestartSec=15
-StateDirectory=hdhr3
+StateDirectory=hdhr3-proxy
 
 # Streaming is inbound UDP on an ephemeral port; keep the sandbox loose enough.
 NoNewPrivileges=yes
